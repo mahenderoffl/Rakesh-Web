@@ -1,0 +1,191 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { HiMenuAlt3, HiX } from 'react-icons/hi';
+
+const NAV_LINKS = [
+  { name: 'Collections', href: '#collection' },
+  { name: 'Why Us', href: '#why-us' },
+  { name: 'Products', href: '#products' },
+  { name: 'Store', href: '#store' },
+];
+
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeLink, setActiveLink] = useState('');
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 50);
+
+      // Scroll progress
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? (y / total) * 100 : 0);
+
+      // Active link detection
+      const sections = NAV_LINKS.map((l) => l.href.slice(1));
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          setActiveLink(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleMobileNav = (href) => {
+    setMobileMenuOpen(false);
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  };
+
+  return (
+    <>
+      {/* Scroll Progress Bar */}
+      <div
+        className="fixed top-0 left-0 h-0.5 z-[100] transition-all duration-100"
+        style={{
+          width: `${scrollProgress}%`,
+          background: 'linear-gradient(90deg, #C9A14A, #E8C547, #F5D76E)',
+          boxShadow: '0 0 10px rgba(201,161,74,0.8)',
+        }}
+      />
+
+      <nav
+        ref={navRef}
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? 'bg-[#0a0a0a]/95 backdrop-blur-2xl shadow-2xl shadow-black/50 border-b border-[rgba(201,161,74,0.15)]'
+            : 'bg-transparent'
+        }`}
+        style={{ paddingTop: '2px' }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <a href="#" className="flex items-center gap-3 group">
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center relative overflow-hidden"
+                style={{
+                  background: 'linear-gradient(135deg, #C9A14A, #E8C547, #B8941B)',
+                  boxShadow: '0 0 20px rgba(201,161,74,0.4)',
+                }}
+              >
+                <span className="text-[#0F0F0F] font-black text-xl relative z-10">M</span>
+                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div>
+                <div className="text-xl font-black text-gold-gradient leading-none">Mangya</div>
+                <div className="text-[10px] text-[#C9A14A]/70 font-semibold tracking-[3px] uppercase">Footwear</div>
+              </div>
+            </a>
+
+            {/* Desktop Links */}
+            <div className="hidden md:flex items-center gap-8">
+              {NAV_LINKS.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`relative text-sm font-semibold transition-all duration-300 group ${
+                    activeLink === item.href.slice(1)
+                      ? 'text-[#C9A14A]'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {item.name}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-[2px] rounded-full transition-all duration-300 ${
+                      activeLink === item.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                    style={{ background: 'linear-gradient(90deg, #C9A14A, #E8C547)' }}
+                  />
+                </a>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden sm:flex items-center gap-3">
+              <a
+                href="https://wa.me/916302541440"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl flex items-center justify-center border border-[rgba(201,161,74,0.3)] text-[#C9A14A] hover:bg-[rgba(201,161,74,0.1)] transition-all duration-300 hover:border-[#C9A14A] hover:scale-110"
+              >
+                <FaWhatsapp size={18} />
+              </a>
+              <a
+                href="tel:6302541440"
+                id="navbar-call-btn"
+                className="btn-primary flex items-center gap-2 px-5 py-2.5 text-sm"
+              >
+                <FaPhone size={14} />
+                <span>Call Now</span>
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden w-10 h-10 flex items-center justify-center text-[#C9A14A] border border-[rgba(201,161,74,0.3)] rounded-xl hover:bg-[rgba(201,161,74,0.1)] transition-all duration-300"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden transition-all duration-500 overflow-hidden ${
+            mobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+          style={{
+            background: 'rgba(10,10,10,0.98)',
+            backdropFilter: 'blur(30px)',
+            borderTop: mobileMenuOpen ? '1px solid rgba(201,161,74,0.15)' : 'none',
+          }}
+        >
+          <div className="px-4 py-6 space-y-2">
+            {NAV_LINKS.map((item, i) => (
+              <button
+                key={item.name}
+                onClick={() => handleMobileNav(item.href)}
+                className="w-full text-left px-4 py-3 rounded-xl text-gray-300 hover:text-[#C9A14A] hover:bg-[rgba(201,161,74,0.08)] transition-all duration-300 font-medium text-sm"
+                style={{ animationDelay: `${i * 50}ms` }}
+              >
+                {item.name}
+              </button>
+            ))}
+            <div className="pt-4 grid grid-cols-2 gap-3">
+              <a
+                href="tel:6302541440"
+                className="btn-primary flex items-center justify-center gap-2 px-4 py-3 text-sm"
+              >
+                <FaPhone size={14} />
+                Call Now
+              </a>
+              <a
+                href="https://wa.me/916302541440"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold border border-[rgba(201,161,74,0.4)] text-[#C9A14A] hover:bg-[rgba(201,161,74,0.1)] transition-all duration-300"
+              >
+                <FaWhatsapp size={16} />
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+}
