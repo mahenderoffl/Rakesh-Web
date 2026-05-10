@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import MovingBanner from './components/MovingBanner';
 import CollectionSection from './components/CollectionSection';
 import WhyChooseUs from './components/WhyChooseUs';
 import ProductsSection from './components/ProductsSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import StoreInfo from './components/StoreInfo';
 import CTASection from './components/CTASection';
+import PremiumShowcase from './components/PremiumShowcase';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
 
@@ -34,11 +36,13 @@ export default function App() {
       <Navbar />
       <main>
         <HeroSection />
+        <MovingBanner />
         <CollectionSection />
         <WhyChooseUs />
         <ProductsSection />
         <TestimonialsSection />
         <StoreInfo />
+        <PremiumShowcase />
         <CTASection />
       </main>
       <Footer />

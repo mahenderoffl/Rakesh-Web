@@ -173,6 +173,16 @@ body {
   100% { transform: scale(4); opacity: 0; }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 @keyframes holographic {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -200,6 +210,8 @@ body {
 .animate-floatYSlow { animation: floatYSlow 6s ease-in-out infinite; }
 .animate-pulsGlow { animation: pulsGlow 3s ease-in-out infinite; }
 .animate-rotateSlow { animation: rotateSlow 20s linear infinite; }
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee-reverse { animation: marquee-reverse 30s linear infinite; }
 
 /* Scroll-reveal base state */
 .reveal {
