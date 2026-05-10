@@ -62,7 +62,7 @@ export default function Navbar() {
 
       <nav
         ref={navRef}
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`sticky top-0 w-full z-50 transition-all duration-500 ${
           scrolled || location.pathname !== '/'
             ? 'bg-[#0a0a0a]/95 backdrop-blur-2xl shadow-2xl shadow-black/50 border-b border-[rgba(201,161,74,0.15)]'
             : 'bg-transparent'
