@@ -108,27 +108,32 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
         </div>
 
         {/* Final Credits */}
-        <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8">
-          <div className="text-center lg:text-left">
-            <p className="text-gray-600 text-xs tracking-wider">
-              © {currentYear} <span className="text-white/40">MANGYA FOOTWEAR</span>. ALL RIGHTS RESERVED.
+        <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-10 pb-20 sm:pb-0">
+          <div className="text-center lg:text-left order-2 lg:order-1">
+            <p className="text-gray-600 text-[10px] tracking-[0.3em] uppercase font-bold">
+              © {currentYear} <span className="text-white/40">MANGYA FOOTWEAR</span>
+              <span className="mx-3 text-white/10 hidden sm:inline">|</span>
+              <span className="block sm:inline mt-2 sm:mt-0">ALL RIGHTS RESERVED</span>
             </p>
           </div>
           
-          <div className="flex flex-col items-center lg:items-end">
-            <div className="flex items-center gap-2 mb-2">
-               <span className="text-[10px] text-gray-600 uppercase tracking-widest font-medium">Architected by</span>
+          <div className="flex flex-col items-center lg:items-end order-1 lg:order-2">
+            <div className="flex items-center gap-3 mb-3">
+               <span className="text-[9px] text-gray-600 uppercase tracking-[0.4em] font-black">Architected by</span>
                <a 
                 href="https://wa.me/919391076809?text=Hi%20WaveSeed%20Growth,%20I%20am%20interested%20in%20a%20premium%20website%20lets%20connect" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gold font-black text-xs tracking-tighter hover:text-white transition-colors duration-300"
+                className="relative px-4 py-1.5 rounded-full border border-gold/20 bg-gold/5 group overflow-hidden"
                >
-                 WAVESEED GROWTH
+                 <div className="absolute inset-0 bg-gold/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500" />
+                 <span className="relative z-10 text-gold font-black text-[10px] tracking-tighter group-hover:text-black transition-colors duration-500">
+                   WAVESEED GROWTH
+                 </span>
                </a>
             </div>
-            <p className="text-[9px] text-gray-700 max-w-[200px] text-center lg:text-right leading-relaxed">
-              Propelling brands through high-fidelity digital experiences.
+            <p className="text-[8px] text-gray-700 max-w-[250px] text-center lg:text-right leading-relaxed uppercase tracking-widest font-medium">
+              Propelling brands through <span className="text-gray-500">high-fidelity digital experiences</span>
             </p>
           </div>
         </div>
