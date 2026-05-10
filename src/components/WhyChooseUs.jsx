@@ -198,7 +198,7 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section id="why-us" className="py-32 relative overflow-hidden" style={{ background: '#0c0c0c' }}>
+    <section id="why-us" className="py-48 relative overflow-hidden" style={{ background: '#0c0c0c' }}>
       {/* Ambient */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[120px] pointer-events-none opacity-40"

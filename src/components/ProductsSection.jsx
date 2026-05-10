@@ -136,7 +136,7 @@ export default function ProductsSection({ onProductClick }) {
   }, []);
 
   return (
-    <section id="products" className="py-32 w-full relative overflow-hidden" style={{ background: '#0F0F0F' }}>
+    <section id="products" className="py-48 w-full relative overflow-hidden" style={{ background: '#0F0F0F' }}>
       {/* Ambient glow */}
       <div
         className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none"

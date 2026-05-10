@@ -67,7 +67,7 @@ const PremiumShowcase = ({ onProductClick }) => {
   ];
 
   return (
-    <section className="py-24 bg-[#0A0A0A] w-full relative overflow-hidden">
+    <section className="py-40 bg-[#0A0A0A] w-full relative overflow-hidden">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />

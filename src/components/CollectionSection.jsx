@@ -178,7 +178,7 @@ export default function CollectionSection() {
   }, []);
 
   return (
-    <section id="collection" className="py-32 relative overflow-hidden" style={{ background: '#0F0F0F' }}>
+    <section id="collection" className="py-48 relative overflow-hidden" style={{ background: '#0F0F0F' }}>
       {/* Section ambient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[100px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse, rgba(201,161,74,0.06) 0%, transparent 70%)' }}

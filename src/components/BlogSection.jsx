@@ -70,7 +70,7 @@ const BlogSection = () => {
   ];
 
   return (
-    <section id="blogs" className="py-24 bg-[#0F0F0F] relative overflow-hidden">
+    <section id="blogs" className="py-40 bg-[#0F0F0F] relative overflow-hidden">
       <div className="safe-container relative z-10">
         <div className="text-center mb-24 flex flex-col items-center">
           <h3 className="text-gold font-bold tracking-[0.4em] uppercase text-xs mb-4 block animate-fadeInUp">

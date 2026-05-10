@@ -131,7 +131,7 @@ export default function StoreInfo() {
   }, []);
 
   return (
-    <section id="store" className="py-32 relative overflow-hidden" style={{ background: '#0F0F0F' }}>
+    <section id="store" className="py-48 relative overflow-hidden" style={{ background: '#0F0F0F' }}>
       {/* Ambient glow */}
       <div
         className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none"

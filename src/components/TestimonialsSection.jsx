@@ -113,7 +113,7 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section id="testimonials" className="py-32 relative overflow-hidden" style={{ background: '#0c0c0c' }}>
+    <section id="testimonials" className="py-48 relative overflow-hidden" style={{ background: '#0c0c0c' }}>
       {/* Ambient */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full blur-[80px] pointer-events-none"
