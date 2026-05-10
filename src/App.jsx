@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -8,6 +8,42 @@ import Home from './pages/Home';
 import BlogDetail from './pages/BlogDetail';
 import { PrivacyPolicy, TermsConditions } from './components/LegalSection';
 import { FaTimes, FaWhatsapp } from 'react-icons/fa';
+
+// Error Boundary to prevent crashes from browser extensions (like Apollo.io)
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Extension/Runtime Error caught:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen bg-[#0F0F0F] flex flex-col items-center justify-center p-8 text-center">
+          <h2 className="text-2xl font-black text-gold mb-4 uppercase tracking-widest">Something went wrong</h2>
+          <p className="text-gray-400 mb-8 max-w-md">
+            This might be caused by a browser extension. Please try refreshing the page or disabling extensions like Apollo.io.
+          </p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="btn-primary px-10 py-4 rounded-xl"
+          >
+            REFRESH PAGE
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // Product Modal Component
 const ProductModal = ({ isOpen, onClose, product }) => {
@@ -85,27 +121,29 @@ export default function App() {
 
   return (
     <Router>
-      <div className="bg-[#0F0F0F] text-white min-h-screen">
-        <AnnouncementBar />
-        <Navbar />
-        
-        <Routes>
-          <Route path="/" element={<Home openProduct={openProduct} />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-        </Routes>
+      <ErrorBoundary>
+        <div className="bg-[#0F0F0F] text-white min-h-screen">
+          <AnnouncementBar />
+          <Navbar />
+          
+          <Routes>
+            <Route path="/" element={<Home openProduct={openProduct} />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+          </Routes>
 
-        <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
-        <FloatingWhatsApp />
-        
-        <ProductModal 
-          isOpen={modalOpen} 
-          onClose={() => setModalOpen(false)} 
-          product={selectedProduct} 
-        />
+          <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
+          <FloatingWhatsApp />
+          
+          <ProductModal 
+            isOpen={modalOpen} 
+            onClose={() => setModalOpen(false)} 
+            product={selectedProduct} 
+          />
 
-        <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
-        <TermsConditions isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
-      </div>
+          <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+          <TermsConditions isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
+        </div>
+      </ErrorBoundary>
     </Router>
   );
 }
