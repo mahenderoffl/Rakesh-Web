@@ -6,9 +6,9 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#050505] pt-24 pb-12 overflow-hidden">
+    <footer className="relative bg-[#050505] pt-48 pb-16 overflow-hidden border-t border-white/5">
       {/* Subtle Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gold/5 rounded-full blur-[100px]" />
 
       <div className="safe-container relative z-10">

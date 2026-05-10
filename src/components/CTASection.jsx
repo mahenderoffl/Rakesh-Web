@@ -22,7 +22,7 @@ export default function CTASection() {
   );
 
   return (
-    <section className="py-56 relative overflow-hidden bg-[#080808] border-t border-white/5">
+    <section className="py-64 relative overflow-hidden bg-[#080808] border-t border-white/5">
       {/* Background Ornaments */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px]" />
