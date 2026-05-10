@@ -45,7 +45,7 @@ const PRODUCTS = [
   },
 ];
 
-function ProductCard({ product, index }) {
+function ProductCard({ product, index, onClick }) {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -57,21 +57,18 @@ function ProductCard({ product, index }) {
     return () => observer.disconnect();
   }, []);
 
-  const whatsappMsg = encodeURIComponent(
-    `Hi Mangya Footwear! I am interested in "${product.name}" (${product.category}). Can you tell me more?`
-  );
-
   return (
     <div
       ref={cardRef}
-      className="reveal product-card"
+      onClick={() => onClick(product)}
+      className="reveal product-card cursor-pointer group"
       style={{ transitionDelay: `${index * 120}ms` }}
     >
       {/* Image area */}
-      <div className="relative h-64 overflow-hidden rounded-t-2xl" style={{ background: '#1a1a1a' }}>
+      <div className="relative h-72 flex items-center justify-center bg-[#1a1a1a] rounded-t-2xl px-4 py-8">
         {/* Badge */}
         <div
-          className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-xs font-black"
+          className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
           style={{
             background: `${product.badgeColor}22`,
             border: `1px solid ${product.badgeColor}50`,
@@ -85,62 +82,48 @@ function ProductCard({ product, index }) {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-contain p-6 transition-transform duration-700"
-          style={{ filter: `drop-shadow(0 10px 30px ${product.badgeColor}33)` }}
+          className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_15px_35px_rgba(0,0,0,0.4)]"
         />
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end justify-center pb-4">
-          <a
-            href={`https://wa.me/916302541440?text=${whatsappMsg}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-[#0F0F0F] transition-all duration-300 hover:scale-105"
-            style={{ background: 'linear-gradient(135deg, #C9A14A, #E8C547)' }}
-          >
-            <FaWhatsapp size={16} />
-            Enquire Now
-          </a>
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+           <div className="px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+             Quick View
+           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        <p className="text-xs text-gray-500 font-semibold tracking-wider uppercase mb-1">{product.category}</p>
-        <h3 className="text-white font-black text-lg mb-2">{product.name}</h3>
+      <div className="p-6 bg-[#141414] rounded-b-2xl">
+        <p className="text-[10px] text-gold/60 font-bold tracking-[0.2em] uppercase mb-2">{product.category}</p>
+        <h3 className="text-white font-bold text-lg mb-2 truncate group-hover:text-gold transition-colors">{product.name}</h3>
 
         {/* Stars */}
-        <div className="flex items-center gap-1 mb-3">
+        <div className="flex items-center gap-1 mb-4">
           {Array.from({ length: 5 }, (_, i) => (
             <span
               key={i}
-              className="text-xs"
+              className="text-[10px]"
               style={{ color: i < product.stars ? '#C9A14A' : '#333' }}
             >
               ★
             </span>
           ))}
-          <span className="text-gray-500 text-xs ml-1">({product.stars}.0)</span>
+          <span className="text-gray-500 text-[10px] ml-2 tracking-widest">({product.stars}.0)</span>
         </div>
 
-        <div className="flex items-center justify-between">
-          <span className="text-[#C9A14A] font-black text-xl">{product.price}</span>
-          <a
-            href={`https://wa.me/916302541440?text=${whatsappMsg}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm font-bold text-[#C9A14A] hover:text-white transition-colors duration-300"
-          >
-            Ask Price
+        <div className="flex items-center justify-between border-t border-white/5 pt-4">
+          <span className="text-gold font-black text-xl">{product.price}</span>
+          <div className="w-8 h-8 rounded-full border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-all">
             <HiArrowRight size={14} />
-          </a>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default function ProductsSection() {
+export default function ProductsSection({ onProductClick }) {
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -153,7 +136,7 @@ export default function ProductsSection() {
   }, []);
 
   return (
-    <section id="products" className="py-32 relative overflow-hidden" style={{ background: '#0F0F0F' }}>
+    <section id="products" className="py-32 w-full relative overflow-hidden" style={{ background: '#0F0F0F' }}>
       {/* Ambient glow */}
       <div
         className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none"
@@ -162,53 +145,49 @@ export default function ProductsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className="reveal flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
-          <div>
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
-              style={{ background: 'rgba(201,161,74,0.08)', border: '1px solid rgba(201,161,74,0.25)', color: '#C9A14A' }}
-            >
-              Featured Items
-            </div>
-            <h2 className="font-black text-white" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>
-              Top{' '}
-              <span className="text-gold-gradient">Picks</span>
-            </h2>
-            <p className="text-gray-400 text-base mt-2 font-light max-w-md">
-              Our handpicked selection of premium footwear — ask us for the best price.
-            </p>
-          </div>
-          <a
-            href="https://wa.me/916302541440?text=Hi%20Mangya!%20I%20want%20to%20see%20your%20full%20collection."
-            target="_blank"
-            rel="noopener noreferrer"
-            id="view-all-btn"
-            className="btn-outline flex items-center gap-2 px-6 py-3 text-sm whitespace-nowrap"
+        <div ref={headerRef} className="reveal text-center mb-16">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase mb-6"
+            style={{ background: 'rgba(201,161,74,0.08)', border: '1px solid rgba(201,161,74,0.25)', color: '#C9A14A' }}
           >
-            <span>View All</span>
-            <HiArrowRight size={16} />
-          </a>
+            Curated Selection
+          </div>
+          <h2 className="font-black text-white mb-6" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+            THE <span className="text-gold-gradient">TOP PICKS</span>
+          </h2>
+          <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto">
+            Discover our handpicked premium footwear collection. Precision-crafted for those who demand excellence.
+          </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {PRODUCTS.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {PRODUCTS.map((p, i) => <ProductCard key={p.id} product={p} index={i} onClick={onProductClick} />)}
         </div>
 
         {/* Bottom CTA */}
-        <div className="reveal mt-12 text-center">
-          <p className="text-gray-500 text-sm">
-            Can't find what you're looking for?{' '}
+        <div className="reveal mt-20 text-center">
+          <p className="text-gray-500 text-sm tracking-wide">
+            Looking for something specific?{' '}
             <a
               href="https://wa.me/916302541440"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#C9A14A] font-semibold hover:underline"
+              className="text-gold font-bold hover:underline underline-offset-4"
             >
-              Chat with us on WhatsApp
-            </a>{' '}
-            and we'll help you find the perfect pair.
+              Consult our experts on WhatsApp
+            </a>
           </p>
+          <div className="mt-8 flex justify-center">
+             <a
+              href="https://wa.me/916302541440"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline px-10 py-4 text-xs font-black uppercase tracking-widest"
+            >
+              <span>View Full Catalog</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -1,13 +1,14 @@
 import React from 'react';
 import { useCardTilt } from '../hooks/useCardTilt';
 
-const ShowcaseCard = ({ image, name, price, index }) => {
+const ShowcaseCard = ({ image, name, price, index, onClick }) => {
   const tiltRef = useCardTilt();
 
   return (
     <div 
       ref={tiltRef}
-      className={`reveal-scale visible group relative product-card p-4 transition-all duration-700 delay-${(index + 1) * 100}`}
+      onClick={() => onClick({ image, name, price })}
+      className={`reveal-scale visible group relative product-card p-4 transition-all duration-700 delay-${(index + 1) * 100} cursor-pointer`}
     >
       <div className="relative overflow-hidden rounded-2xl aspect-square bg-[#1A1A1A]">
         <img 
@@ -15,12 +16,10 @@ const ShowcaseCard = ({ image, name, price, index }) => {
           alt={name} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
-        <div className="absolute bottom-4 left-4 right-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-          <button className="w-full py-3 bg-gold text-dark font-bold rounded-xl shadow-lg hover:bg-gold-light transition-colors">
-            Order via WhatsApp
-          </button>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+           <div className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+             View Details
+           </div>
         </div>
         
         <div className="absolute top-4 right-4">
@@ -51,7 +50,7 @@ const ShowcaseCard = ({ image, name, price, index }) => {
   );
 };
 
-const PremiumShowcase = () => {
+const PremiumShowcase = ({ onProductClick }) => {
   const newProducts = [
     {
       id: 1,
@@ -68,7 +67,7 @@ const PremiumShowcase = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#0A0A0A] relative overflow-hidden">
+    <section className="py-24 bg-[#0A0A0A] w-full relative overflow-hidden">
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
@@ -83,7 +82,7 @@ const PremiumShowcase = () => {
             <span className="text-gold-gradient">NEW ARRIVALS</span>
           </h2>
           <div className="section-divider mb-8" />
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
             Experience the pinnacle of footwear comfort and style with our latest additions. 
             Handpicked for the modern woman who values both aesthetics and durability.
           </p>
@@ -91,7 +90,7 @@ const PremiumShowcase = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {newProducts.map((product, index) => (
-            <ShowcaseCard key={product.id} {...product} index={index} />
+            <ShowcaseCard key={product.id} {...product} index={index} onClick={onProductClick} />
           ))}
         </div>
 

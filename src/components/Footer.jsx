@@ -2,25 +2,20 @@ import React from 'react';
 import { FaPhone, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { MdVerified } from 'react-icons/md';
 
-export default function Footer() {
+export default function Footer({ onPrivacyClick, onTermsClick }) {
   return (
     <footer className="footer-gradient relative overflow-hidden" style={{ background: '#0a0a0a' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
-          <div className="space-y-5">
+          <div className="space-y-5 col-span-1 md:col-span-1">
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div
-                  className="w-11 h-11 rotate-45 rounded-lg flex items-center justify-center relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, #C9A14A, #E8C547, #B8941B)',
-                    boxShadow: '0 0 20px rgba(201,161,74,0.3)',
-                    border: '1px solid rgba(255,255,255,0.1)'
-                  }}
+                  className="w-12 h-12 rounded-full flex items-center justify-center relative overflow-hidden border-2 border-gold/20"
                 >
+                  <img src="/rakesh_logo.jpeg" alt="Mangya Logo" className="w-full h-full object-cover" />
                 </div>
-                <span className="absolute inset-0 flex items-center justify-center text-[#0F0F0F] font-black text-xl z-10 pointer-events-none">M</span>
               </div>
               <div>
                 <div className="text-xl font-black text-gold-gradient leading-none tracking-tight">Mangya</div>
@@ -38,15 +33,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold mb-5 text-sm tracking-widest uppercase">Quick Links</h4>
+            <h4 className="text-white font-bold mb-5 text-sm tracking-widest uppercase">Explore</h4>
             <ul className="space-y-3">
               {[
                 { label: 'Home', href: '#home' },
                 { label: 'Collections', href: '#collection' },
                 { label: 'Why Choose Us', href: '#why-us' },
                 { label: 'Top Picks', href: '#products' },
-                { label: 'Testimonials', href: '#testimonials' },
-                { label: 'Visit Store', href: '#store' },
               ].map((link) => (
                 <li key={link.label}>
                   <a
@@ -58,6 +51,22 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-white font-bold mb-5 text-sm tracking-widest uppercase">Support</h4>
+            <ul className="space-y-3">
+              <li>
+                <button onClick={onPrivacyClick} className="text-gray-500 text-sm hover:text-gold transition-all duration-300">Privacy Policy</button>
+              </li>
+              <li>
+                <button onClick={onTermsClick} className="text-gray-500 text-sm hover:text-gold transition-all duration-300">Terms & Conditions</button>
+              </li>
+              <li>
+                <a href="#store" className="text-gray-500 text-sm hover:text-gold transition-all duration-300">Store Locator</a>
+              </li>
             </ul>
           </div>
 
