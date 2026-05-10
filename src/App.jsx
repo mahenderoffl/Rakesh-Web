@@ -38,37 +38,38 @@ const ProductModal = ({ isOpen, onClose, product }) => {
           <FaTimes size={20} />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="relative h-[400px] md:h-[600px] bg-[#141414] flex items-center justify-center p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8">
+          <div className="relative h-[400px] md:h-[700px] bg-[#111111] flex items-center justify-center p-12 lg:p-20">
             <img 
               src={product.image} 
               alt={product.name} 
-              className="max-w-full max-h-full object-contain drop-shadow-[0_20px_50px_rgba(201,161,74,0.3)] transition-transform duration-700 hover:scale-105"
+              className="max-w-full max-h-full object-contain drop-shadow-[0_30px_60px_rgba(201,161,74,0.4)] transition-transform duration-700 hover:scale-105"
             />
           </div>
-          <div className="p-8 md:p-12 flex flex-col justify-center">
-            <span className="text-gold font-bold tracking-[0.2em] uppercase text-xs mb-4">Product Details</span>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">{product.name}</h2>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed font-light">
+          <div className="p-10 md:p-16 lg:p-24 flex flex-col justify-center bg-[#1A1A1A]">
+            <span className="text-gold font-black tracking-[0.3em] uppercase text-[10px] mb-6 block">Product Details</span>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1] tracking-tighter">{product.name}</h2>
+            <div className="w-16 h-1 bg-gold/20 mb-10" />
+            <p className="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed font-light">
               Experience unparalleled luxury and comfort. Handcrafted with premium materials for the elite lifestyle. 
               Each pair is designed to provide maximum support while maintaining a sophisticated aesthetic.
             </p>
-            <div className="mb-10">
-              <span className="text-gray-500 text-sm block mb-1 uppercase tracking-widest font-medium">Starting Price</span>
-              <span className="text-4xl font-black text-gold-gradient">{product.price || 'Ask for Best Price'}</span>
+            <div className="mb-12">
+              <span className="text-gray-500 text-[10px] block mb-2 uppercase tracking-[0.2em] font-bold">Starting Price</span>
+              <span className="text-5xl font-black text-gold-gradient tracking-tight">₹{product.price || 'Ask for Best Price'}</span>
             </div>
             
             <a 
               href={`https://wa.me/916302541440?text=${whatsappMsg}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary flex items-center justify-center gap-4 py-5 text-lg font-bold rounded-2xl w-full shadow-[0_0_30px_rgba(201,161,74,0.3)] hover:shadow-[0_0_50px_rgba(201,161,74,0.5)]"
+              className="btn-primary flex items-center justify-center gap-4 py-6 text-base font-black tracking-widest rounded-2xl w-full shadow-[0_20px_40px_rgba(201,161,74,0.3)] hover:shadow-[0_25px_50px_rgba(201,161,74,0.5)] transition-all duration-300"
             >
-              <FaWhatsapp size={24} />
+              <FaWhatsapp size={22} />
               ORDER ON WHATSAPP
             </a>
             
-            <p className="text-gray-500 text-center mt-6 text-xs italic">
+            <p className="text-gray-600 text-center mt-10 text-xs italic tracking-wide">
               * Fast delivery across Narsampet and surroundings. Satisfaction guaranteed.
             </p>
           </div>
