@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mangya-footwear.vercel.app/sitemap.xml
+Sitemap: https://mangyafootwear.clapinconcepts.workers.dev/sitemap.xml

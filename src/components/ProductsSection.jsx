@@ -143,7 +143,7 @@ export default function ProductsSection({ onProductClick }) {
         style={{ background: 'radial-gradient(circle, rgba(201,161,74,0.05) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="safe-container">
         {/* Header */}
         <div ref={headerRef} className="reveal text-center mb-24 flex flex-col items-center">
           <h3 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8"
