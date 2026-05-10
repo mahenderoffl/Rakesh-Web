@@ -186,22 +186,22 @@ export default function CollectionSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className="reveal text-center mb-20">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
+        <div ref={headerRef} className="reveal text-center mb-24 flex flex-col items-center">
+          <h3 className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8"
             style={{ background: 'rgba(201,161,74,0.08)', border: '1px solid rgba(201,161,74,0.25)', color: '#C9A14A' }}
           >
             <MdVerified size={14} />
             Curated Collections
-          </div>
-          <h2 className="font-black text-white mb-4" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+          </h3>
+          <h2 className="font-black text-white mb-8 tracking-tighter leading-none" style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}>
             Shop by{' '}
             <span className="text-gold-gradient">Category</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto font-light">
-            Premium selections for every lifestyle — crafted with care, worn with pride.
+          <div className="section-divider mb-10 w-24 h-[2px] bg-gold/30" />
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl font-light leading-relaxed">
+            Premium selections for every lifestyle — crafted with care, worn with pride. 
+            Discover the perfect pair for your daily journey.
           </p>
-          <div className="section-divider mt-8" />
         </div>
 
         {/* Cards */}

@@ -145,18 +145,19 @@ export default function ProductsSection({ onProductClick }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className="reveal text-center mb-16">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase mb-6"
+        <div ref={headerRef} className="reveal text-center mb-24 flex flex-col items-center">
+          <h3 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8"
             style={{ background: 'rgba(201,161,74,0.08)', border: '1px solid rgba(201,161,74,0.25)', color: '#C9A14A' }}
           >
             Curated Selection
-          </div>
-          <h2 className="font-black text-white mb-6" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+          </h3>
+          <h2 className="font-black text-white mb-8 tracking-tighter leading-none" style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}>
             THE <span className="text-gold-gradient">TOP PICKS</span>
           </h2>
-          <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto">
-            Discover our handpicked premium footwear collection. Precision-crafted for those who demand excellence.
+          <div className="section-divider mb-10 w-24 h-[2px] bg-gold/30" />
+          <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed">
+            Discover our handpicked premium footwear collection. Precision-crafted for those who demand excellence 
+            in every single step they take.
           </p>
         </div>
 

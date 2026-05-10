@@ -72,17 +72,20 @@ const BlogSection = () => {
   return (
     <section id="blogs" className="py-24 bg-[#0F0F0F] relative overflow-hidden">
       <div className="safe-container relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl">
-            <span className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4 block animate-fadeInUp">
-              Our Journal
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black text-white animate-fadeInUp">
-              STEP INTO <span className="text-gold-gradient">INSIGHTS</span>
-            </h2>
-          </div>
-          <button className="btn-outline px-8 py-3 text-xs">
-            <span>View All Stories</span>
+        <div className="text-center mb-24 flex flex-col items-center">
+          <h3 className="text-gold font-bold tracking-[0.4em] uppercase text-xs mb-4 block animate-fadeInUp">
+            Our Journal
+          </h3>
+          <h2 className="text-4xl md:text-7xl font-black mb-8 animate-fadeInUp leading-none tracking-tighter">
+            STEP INTO <span className="text-gold-gradient">INSIGHTS</span>
+          </h2>
+          <div className="section-divider mb-10 w-24 h-[2px] bg-gold/30 mx-auto" />
+          <p className="text-gray-400 max-w-2xl text-center text-lg md:text-xl font-light leading-relaxed mb-10">
+            Exploring the intersection of fashion, comfort, and premium lifestyle. 
+            Your guide to the latest in elite footwear.
+          </p>
+          <button className="btn-outline px-10 py-4 text-xs">
+            <span>Explore All Stories</span>
           </button>
         </div>
 
