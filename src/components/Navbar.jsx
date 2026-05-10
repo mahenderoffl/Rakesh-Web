@@ -123,10 +123,15 @@ export default function Navbar() {
               </a>
               <a
                 href="tel:6302541440"
-                className="btn-primary flex items-center gap-2 px-5 py-2.5 text-sm"
+                className="group relative flex items-center gap-2.5 px-6 py-3 bg-gradient-to-r from-[#C9A14A] to-[#B8941B] text-black rounded-xl font-black text-[11px] tracking-[0.15em] transition-all duration-500 hover:scale-105 hover:shadow-[0_15px_30px_rgba(201,161,74,0.35)] overflow-hidden shadow-lg"
               >
-                <FaPhone size={14} />
-                <span>Call Now</span>
+                {/* Shimmer Effect */}
+                <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[150%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
+                
+                <div className="relative flex items-center gap-2">
+                  <FaPhone size={13} className="transition-transform duration-300 group-hover:rotate-12" />
+                  <span className="mt-0.5">CALL NOW</span>
+                </div>
               </a>
             </div>
 
@@ -168,10 +173,10 @@ export default function Navbar() {
             <div className="pt-4 grid grid-cols-2 gap-3">
               <a
                 href="tel:6302541440"
-                className="btn-primary flex items-center justify-center gap-2 px-4 py-3 text-sm"
+                className="flex items-center justify-center gap-3 px-4 py-4 bg-gradient-to-r from-[#C9A14A] to-[#B8941B] text-black rounded-xl font-black text-xs tracking-[0.2em] shadow-lg active:scale-95 transition-all duration-300"
               >
                 <FaPhone size={14} />
-                Call Now
+                CALL NOW
               </a>
               <a
                 href="https://wa.me/916302541440"
