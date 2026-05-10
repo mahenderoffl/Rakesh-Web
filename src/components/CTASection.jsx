@@ -40,19 +40,29 @@ export default function CTASection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <a
               href={`tel:${phoneNumber}`}
-              className="btn-primary px-12 py-5 rounded-2xl w-full sm:w-auto flex items-center justify-center gap-3 font-black text-sm tracking-widest shadow-[0_20px_40px_rgba(201,161,74,0.3)] hover:shadow-[0_25px_50px_rgba(201,161,74,0.4)]"
+              className="group relative flex items-center justify-center gap-4 px-12 py-5 bg-gradient-to-r from-[#C9A14A] to-[#B8941B] text-black rounded-2xl w-full sm:w-auto font-black text-sm tracking-[0.2em] shadow-[0_20px_50px_rgba(201,161,74,0.3)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(201,161,74,0.5)] transition-all duration-500 overflow-hidden"
             >
-              <FaPhone size={16} />
-              CALL DIRECTLY
+              {/* Shimmer */}
+              <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[150%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
+              
+              <div className="relative z-10 flex items-center gap-3">
+                <FaPhone size={18} className="transition-transform duration-300 group-hover:rotate-12" />
+                <span>CALL DIRECTLY</span>
+              </div>
             </a>
             <a
               href={`https://wa.me/91${phoneNumber}?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] hover:bg-[#128C7E] text-white px-12 py-5 rounded-2xl w-full sm:w-auto flex items-center justify-center gap-3 font-black text-sm tracking-widest transition-all duration-300 hover:scale-105"
+              className="group relative flex items-center justify-center gap-4 px-12 py-5 bg-[#25D366] text-white rounded-2xl w-full sm:w-auto font-black text-sm tracking-[0.2em] shadow-[0_20px_50px_rgba(37,211,102,0.2)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(37,211,102,0.4)] transition-all duration-500 overflow-hidden"
             >
-              <FaWhatsapp size={20} />
-              WHATSAPP US
+              {/* Shimmer */}
+              <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[150%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
+              
+              <div className="relative z-10 flex items-center gap-3">
+                <FaWhatsapp size={22} className="transition-transform duration-300 group-hover:scale-110" />
+                <span>WHATSAPP US</span>
+              </div>
             </a>
           </div>
 
