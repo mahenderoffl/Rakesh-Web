@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { name: 'Collections', href: '#collection' },
   { name: 'Why Us', href: '#why-us' },
   { name: 'Products', href: '#products' },
+  { name: 'Blogs', href: '#blogs' },
   { name: 'Store', href: '#store' },
 ];
 
@@ -73,19 +74,22 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <a href="#" className="flex items-center gap-3 group">
-              <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center relative overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg, #C9A14A, #E8C547, #B8941B)',
-                  boxShadow: '0 0 20px rgba(201,161,74,0.4)',
-                }}
-              >
-                <span className="text-[#0F0F0F] font-black text-xl relative z-10">M</span>
-                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative">
+                <div
+                  className="w-12 h-12 rotate-45 rounded-lg flex items-center justify-center relative overflow-hidden transition-transform duration-500 group-hover:rotate-[225deg]"
+                  style={{
+                    background: 'linear-gradient(135deg, #C9A14A, #E8C547, #B8941B)',
+                    boxShadow: '0 0 25px rgba(201,161,74,0.4)',
+                    border: '2px solid rgba(255,255,255,0.1)'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <span className="absolute inset-0 flex items-center justify-center text-[#0F0F0F] font-black text-2xl z-10 pointer-events-none">M</span>
               </div>
-              <div>
-                <div className="text-xl font-black text-gold-gradient leading-none">Mangya</div>
-                <div className="text-[10px] text-[#C9A14A]/70 font-semibold tracking-[3px] uppercase">Footwear</div>
+              <div className="ml-1">
+                <div className="text-2xl font-black text-gold-gradient leading-none tracking-tight">Mangya</div>
+                <div className="text-[9px] text-[#C9A14A]/80 font-bold tracking-[0.4em] uppercase mt-1">Footwear Elite</div>
               </div>
             </a>
 

@@ -7,6 +7,7 @@ import WhyChooseUs from './components/WhyChooseUs';
 import ProductsSection from './components/ProductsSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import StoreInfo from './components/StoreInfo';
+import BlogSection from './components/BlogSection';
 import CTASection from './components/CTASection';
 import PremiumShowcase from './components/PremiumShowcase';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -42,6 +43,7 @@ export default function App() {
         <WhyChooseUs />
         <ProductsSection />
         <TestimonialsSection />
+        <BlogSection />
         <StoreInfo />
         <CTASection />
       </main>

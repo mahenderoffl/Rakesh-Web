@@ -10,15 +10,21 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-5">
             <div className="flex items-center gap-3">
-              <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #C9A14A, #E8C547)', boxShadow: '0 0 20px rgba(201,161,74,0.3)' }}
-              >
-                <span className="text-[#0F0F0F] font-black text-xl">M</span>
+              <div className="relative">
+                <div
+                  className="w-11 h-11 rotate-45 rounded-lg flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(135deg, #C9A14A, #E8C547, #B8941B)',
+                    boxShadow: '0 0 20px rgba(201,161,74,0.3)',
+                    border: '1px solid rgba(255,255,255,0.1)'
+                  }}
+                >
+                </div>
+                <span className="absolute inset-0 flex items-center justify-center text-[#0F0F0F] font-black text-xl z-10 pointer-events-none">M</span>
               </div>
               <div>
-                <div className="text-xl font-black text-gold-gradient">Mangya</div>
-                <div className="text-[10px] text-[#C9A14A]/60 font-semibold tracking-[3px] uppercase">Footwear</div>
+                <div className="text-xl font-black text-gold-gradient leading-none tracking-tight">Mangya</div>
+                <div className="text-[9px] text-[#C9A14A]/60 font-bold tracking-[3px] uppercase mt-1">Footwear Elite</div>
               </div>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
