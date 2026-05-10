@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AnnouncementBar from './components/AnnouncementBar';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import FloatingQR from './components/FloatingQR';
 import Home from './pages/Home';
 import BlogDetail from './pages/BlogDetail';
 import { PrivacyPolicy, TermsConditions } from './components/LegalSection';
@@ -133,6 +134,7 @@ export default function App() {
 
           <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
           <FloatingWhatsApp />
+          <FloatingQR />
           
           <ProductModal 
             isOpen={modalOpen} 
