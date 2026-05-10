@@ -43,46 +43,54 @@ export default function CTASection() {
             through our exclusive collections and find your perfect fit.
           </p>
 
-          <ShadowWrapper className="w-full flex justify-center mb-24">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-4xl">
-              <a href={`tel:${phoneNumber}`} className="shadow-btn w-full sm:w-auto">
+          <ShadowWrapper className="w-full flex justify-center mb-20">
+            <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 w-full max-w-4xl px-4">
+              <a href={`tel:${phoneNumber}`} className="shadow-btn flex-1 sm:flex-none sm:min-w-[280px]">
                 <div className="shimmer" />
-                <FaPhone size={18} />
-                <span>CALL DIRECTLY</span>
+                <FaPhone size={16} />
+                <span className="whitespace-nowrap">CALL DIRECTLY</span>
               </a>
               <a
                 href={`https://wa.me/91${phoneNumber}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shadow-btn shadow-btn-whatsapp w-full sm:w-auto"
+                className="shadow-btn shadow-btn-whatsapp flex-1 sm:flex-none sm:min-w-[280px]"
               >
                 <div className="shimmer" />
-                <FaWhatsapp size={22} />
-                <span>WHATSAPP US</span>
+                <FaWhatsapp size={20} />
+                <span className="whitespace-nowrap">WHATSAPP US</span>
               </a>
             </div>
           </ShadowWrapper>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/5 pt-20 w-full">
-            {[
-              { icon: <MdAccessTime size={24} />, label: "9:00 AM – 10:00 PM", sub: "DAILY SERVICE" },
-              { icon: <FaMapMarkerAlt size={22} />, label: "Beside Bus Stand", sub: "NARSAMPET, TS" },
-              { icon: <MdVerified size={24} />, label: "500+ Happy Clients", sub: "PREMIUM TRUST" }
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center group">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-black transition-all duration-500 border border-white/10 group-hover:border-gold/50 shadow-xl">
-                  {item.icon}
-                </div>
-                <p className="text-white font-black text-sm tracking-tight mb-2 uppercase">{item.label}</p>
-                <p className="text-gold/40 text-[10px] font-black tracking-[0.3em] uppercase">{item.sub}</p>
+          {/* Unique Floating Trust Ribbon */}
+          <div className="w-full max-w-5xl mx-auto mt-20">
+            <div className="relative p-[1px] rounded-3xl bg-gradient-to-r from-transparent via-gold/30 to-transparent">
+              <div className="bg-[#0A0A0A]/80 backdrop-blur-2xl rounded-3xl py-8 px-10 flex flex-col md:flex-row items-center justify-between gap-12 border border-white/5">
+                {[
+                  { icon: <MdAccessTime size={24} />, label: "9:00 AM – 10:00 PM", sub: "DAILY SERVICE" },
+                  { icon: <FaMapMarkerAlt size={22} />, label: "Beside Bus Stand", sub: "NARSAMPET, TS" },
+                  { icon: <MdVerified size={24} />, label: "500+ Happy Clients", sub: "PREMIUM TRUST" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-5 group">
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-all duration-500 shadow-lg">
+                      {item.icon}
+                    </div>
+                    <div className="text-left">
+                      <p className="text-white font-black text-xs tracking-tight uppercase">{item.label}</p>
+                      <p className="text-gold/40 text-[9px] font-black tracking-[0.2em] uppercase">{item.sub}</p>
+                    </div>
+                    {i < 2 && <div className="hidden md:block w-px h-10 bg-white/5 ml-8" />}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Bottom Divider to separate from Footer */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+      {/* Visual Bottom Divider */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </section>
   );
 }
