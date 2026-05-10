@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import MovingBanner from './components/MovingBanner';
-import CollectionSection from './components/CollectionSection';
-import WhyChooseUs from './components/WhyChooseUs';
-import ProductsSection from './components/ProductsSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import StoreInfo from './components/StoreInfo';
-import BlogSection from './components/BlogSection';
-import CTASection from './components/CTASection';
-import PremiumShowcase from './components/PremiumShowcase';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
 import AnnouncementBar from './components/AnnouncementBar';
-import { FaWhatsapp, FaTimes } from 'react-icons/fa';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
+import Home from './pages/Home';
+import BlogDetail from './pages/BlogDetail';
 import { PrivacyPolicy, TermsConditions } from './components/LegalSection';
+import { FaTimes, FaWhatsapp } from 'react-icons/fa';
 
 // Product Modal Component
 const ProductModal = ({ isOpen, onClose, product }) => {
@@ -90,51 +83,29 @@ export default function App() {
     setModalOpen(true);
   };
 
-  // Cursor glow effect
-  useEffect(() => {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-glow';
-    document.body.appendChild(cursor);
-
-    const move = (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    };
-
-    window.addEventListener('mousemove', move);
-    return () => {
-      window.removeEventListener('mousemove', move);
-      if (document.body.contains(cursor)) document.body.removeChild(cursor);
-    };
-  }, []);
-
   return (
-    <div className="bg-[#0F0F0F] text-white min-h-screen">
-      <AnnouncementBar />
-      <Navbar />
-      <main className="w-full">
-        <HeroSection />
-        <MovingBanner />
-        <PremiumShowcase onProductClick={openProduct} />
-        <CollectionSection />
-        <WhyChooseUs />
-        <ProductsSection onProductClick={openProduct} />
-        <TestimonialsSection />
-        <BlogSection />
-        <StoreInfo />
-        <CTASection />
-      </main>
-      <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
-      <FloatingWhatsApp />
-      
-      <ProductModal 
-        isOpen={modalOpen} 
-        onClose={() => setModalOpen(false)} 
-        product={selectedProduct} 
-      />
+    <Router>
+      <div className="bg-[#0F0F0F] text-white min-h-screen">
+        <AnnouncementBar />
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" element={<Home openProduct={openProduct} />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
+        </Routes>
 
-      <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
-      <TermsConditions isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
-    </div>
+        <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
+        <FloatingWhatsApp />
+        
+        <ProductModal 
+          isOpen={modalOpen} 
+          onClose={() => setModalOpen(false)} 
+          product={selectedProduct} 
+        />
+
+        <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+        <TermsConditions isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
+      </div>
+    </Router>
   );
 }

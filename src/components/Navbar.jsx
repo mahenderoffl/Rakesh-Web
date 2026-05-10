@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { name: 'Collections', href: '#collection' },
-  { name: 'Why Us', href: '#why-us' },
-  { name: 'Products', href: '#products' },
-  { name: 'Blogs', href: '#blogs' },
-  { name: 'Store', href: '#store' },
+  { name: 'Collections', href: '/#collection' },
+  { name: 'Why Us', href: '/#why-us' },
+  { name: 'Products', href: '/#products' },
+  { name: 'Blogs', href: '/#blogs' },
+  { name: 'Store', href: '/#store' },
 ];
 
 export default function Navbar() {
@@ -15,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeLink, setActiveLink] = useState('');
+  const location = useLocation();
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -26,28 +29,24 @@ export default function Navbar() {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(total > 0 ? (y / total) * 100 : 0);
 
-      // Active link detection
-      const sections = NAV_LINKS.map((l) => l.href.slice(1));
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top <= 120) {
-          setActiveLink(sections[i]);
-          break;
+      // Active link detection (only on home page)
+      if (location.pathname === '/') {
+        const sections = NAV_LINKS.map((l) => l.href.split('#')[1]);
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sections[i]);
+          if (el && el.getBoundingClientRect().top <= 120) {
+            setActiveLink(sections[i]);
+            break;
+          }
         }
+      } else {
+        setActiveLink('');
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleMobileNav = (href) => {
-    setMobileMenuOpen(false);
-    setTimeout(() => {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 300);
-  };
+  }, [location]);
 
   return (
     <>
@@ -64,7 +63,7 @@ export default function Navbar() {
       <nav
         ref={navRef}
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
+          scrolled || location.pathname !== '/'
             ? 'bg-[#0a0a0a]/95 backdrop-blur-2xl shadow-2xl shadow-black/50 border-b border-[rgba(201,161,74,0.15)]'
             : 'bg-transparent'
         }`}
@@ -73,7 +72,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <div className="relative">
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:scale-110 shadow-lg border-2 border-gold/30"
@@ -86,16 +85,17 @@ export default function Navbar() {
                 <div className="text-2xl font-black text-gold-gradient leading-none tracking-tight">Mangya</div>
                 <div className="text-[9px] text-[#C9A14A]/80 font-bold tracking-[0.4em] uppercase mt-1">Footwear Elite</div>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-8">
               {NAV_LINKS.map((item) => (
-                <a
+                <NavLink
+                  smooth
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className={`relative text-sm font-semibold transition-all duration-300 group ${
-                    activeLink === item.href.slice(1)
+                    activeLink === item.href.split('#')[1]
                       ? 'text-[#C9A14A]'
                       : 'text-gray-300 hover:text-white'
                   }`}
@@ -103,11 +103,11 @@ export default function Navbar() {
                   {item.name}
                   <span
                     className={`absolute -bottom-1 left-0 h-[2px] rounded-full transition-all duration-300 ${
-                      activeLink === item.href.slice(1) ? 'w-full' : 'w-0 group-hover:w-full'
+                      activeLink === item.href.split('#')[1] ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                     style={{ background: 'linear-gradient(90deg, #C9A14A, #E8C547)' }}
                   />
-                </a>
+                </NavLink>
               ))}
             </div>
 
@@ -123,7 +123,6 @@ export default function Navbar() {
               </a>
               <a
                 href="tel:6302541440"
-                id="navbar-call-btn"
                 className="btn-primary flex items-center gap-2 px-5 py-2.5 text-sm"
               >
                 <FaPhone size={14} />
@@ -155,14 +154,16 @@ export default function Navbar() {
         >
           <div className="px-4 py-6 space-y-2">
             {NAV_LINKS.map((item, i) => (
-              <button
+              <NavLink
+                smooth
                 key={item.name}
-                onClick={() => handleMobileNav(item.href)}
-                className="w-full text-left px-4 py-3 rounded-xl text-gray-300 hover:text-[#C9A14A] hover:bg-[rgba(201,161,74,0.08)] transition-all duration-300 font-medium text-sm"
+                to={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full text-left px-4 py-3 rounded-xl text-gray-300 hover:text-[#C9A14A] hover:bg-[rgba(201,161,74,0.08)] transition-all duration-300 font-medium text-sm"
                 style={{ animationDelay: `${i * 50}ms` }}
               >
                 {item.name}
-              </button>
+              </NavLink>
             ))}
             <div className="pt-4 grid grid-cols-2 gap-3">
               <a
