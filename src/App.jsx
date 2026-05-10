@@ -37,12 +37,12 @@ export default function App() {
       <main>
         <HeroSection />
         <MovingBanner />
+        <PremiumShowcase />
         <CollectionSection />
         <WhyChooseUs />
         <ProductsSection />
         <TestimonialsSection />
         <StoreInfo />
-        <PremiumShowcase />
         <CTASection />
       </main>
       <Footer />
