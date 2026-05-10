@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPhone, FaWhatsapp, FaMapMarkerAlt, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { MdVerified } from 'react-icons/md';
+import { QRCodeSVG } from 'qrcode.react';
 
 export default function Footer({ onPrivacyClick, onTermsClick }) {
   const currentYear = new Date().getFullYear();
@@ -84,7 +85,7 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
           </div>
 
           {/* Physical Presence */}
-          <div>
+          <div className="space-y-8">
             <h4 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-8 border-l-2 border-gold pl-4">Visit Us</h4>
             <div className="space-y-6">
               <div className="flex gap-4">
@@ -102,6 +103,30 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* QR Code Experience - Unique Desktop Feature */}
+          <div className="hidden lg:block">
+            <h4 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-8 border-l-2 border-gold pl-4">Scan for Mobile</h4>
+            <div className="p-4 bg-white rounded-2xl inline-block shadow-2xl hover:scale-105 transition-transform duration-500">
+              <QRCodeSVG 
+                value="https://mangyafootwear.clapinconcepts.workers.dev" 
+                size={100}
+                level="H"
+                includeMargin={false}
+                imageSettings={{
+                  src: "/favicon.svg",
+                  x: undefined,
+                  y: undefined,
+                  height: 20,
+                  width: 20,
+                  excavate: true,
+                }}
+              />
+            </div>
+            <p className="text-gray-600 text-[10px] mt-4 font-medium uppercase tracking-widest leading-relaxed">
+              Continue your elite<br />journey on mobile
+            </p>
           </div>
 
         </div>
