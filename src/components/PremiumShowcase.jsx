@@ -73,16 +73,16 @@ const PremiumShowcase = ({ onProductClick }) => {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
 
       <div className="safe-container relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4 block animate-fadeInUp">
+        <div className="text-center mb-20 flex flex-col items-center">
+          <h3 className="text-gold font-bold tracking-[0.4em] uppercase text-xs mb-4 block animate-fadeInUp">
             Exclusive Collection
-          </span>
-          <h2 className="text-4xl md:text-6xl font-black mb-6 animate-fadeInUp">
+          </h3>
+          <h2 className="text-4xl md:text-7xl font-black mb-8 animate-fadeInUp leading-none tracking-tighter">
             <span className="text-white">PREMIUM</span> <br />
             <span className="text-gold-gradient">NEW ARRIVALS</span>
           </h2>
-          <div className="section-divider mb-8" />
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
+          <div className="section-divider mb-10 w-24 h-[2px] bg-gold/30 mx-auto" />
+          <p className="text-gray-400 max-w-2xl text-center text-lg md:text-xl font-light leading-relaxed">
             Experience the pinnacle of footwear comfort and style with our latest additions. 
             Handpicked for the modern woman who values both aesthetics and durability.
           </p>
