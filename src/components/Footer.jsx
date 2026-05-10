@@ -117,8 +117,9 @@ export default function Footer() {
           <p className="text-gray-600 text-xs">
             © {new Date().getFullYear()} Mangya Footwear, Narsampet. All rights reserved.
           </p>
-          <p className="text-gray-600 text-xs">
-            Built with ❤️ for premium fashion lovers
+          <p className="text-gray-600 text-xs text-center sm:text-right">
+            Developed & Managed by <a href="https://wa.me/919391076809?text=Hi%20WaveSeed%20Growth,%20I'm%20interested%20in%20a%20custom%20website%20for%20my%20business." target="_blank" rel="noopener noreferrer" className="text-[#C9A14A] hover:text-white transition-colors duration-300 font-semibold underline decoration-gold/30 underline-offset-4">WaveSeed Growth</a>. 
+            <span className="block sm:inline sm:ml-2">Get your custom website today.</span>
           </p>
         </div>
       </div>
