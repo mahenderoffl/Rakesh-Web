@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { FaPhone, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
 import { MdVerified, MdAccessTime } from 'react-icons/md';
+import ShadowWrapper from './ShadowWrapper';
 
 export default function CTASection() {
   const sectionRef = useRef(null);
@@ -42,26 +43,25 @@ export default function CTASection() {
             through our exclusive collections and find your perfect fit.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-24 w-full">
-            <a
-              href={`tel:${phoneNumber}`}
-              className="group relative flex items-center justify-center gap-4 px-14 py-6 bg-gradient-to-r from-[#C9A14A] to-[#B8941B] text-black rounded-2xl w-full sm:w-auto font-black text-xs tracking-[0.25em] shadow-[0_20px_50px_rgba(201,161,74,0.3)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(201,161,74,0.5)] transition-all duration-700 overflow-hidden"
-            >
-              <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[150%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
-              <FaPhone size={18} className="transition-transform duration-300 group-hover:rotate-12" />
-              <span>CALL DIRECTLY</span>
-            </a>
-            <a
-              href={`https://wa.me/91${phoneNumber}?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center justify-center gap-4 px-14 py-6 bg-[#25D366] text-white rounded-2xl w-full sm:w-auto font-black text-xs tracking-[0.25em] shadow-[0_20px_50px_rgba(37,211,102,0.2)] hover:scale-105 hover:shadow-[0_25px_60px_rgba(37,211,102,0.4)] transition-all duration-700 overflow-hidden"
-            >
-              <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-25deg] -translate-x-[150%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out" />
-              <FaWhatsapp size={22} className="transition-transform duration-300 group-hover:scale-110" />
-              <span>WHATSAPP US</span>
-            </a>
-          </div>
+          <ShadowWrapper className="w-full flex justify-center mb-24">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-4xl">
+              <a href={`tel:${phoneNumber}`} className="shadow-btn w-full sm:w-auto">
+                <div className="shimmer" />
+                <FaPhone size={18} />
+                <span>CALL DIRECTLY</span>
+              </a>
+              <a
+                href={`https://wa.me/91${phoneNumber}?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shadow-btn shadow-btn-whatsapp w-full sm:w-auto"
+              >
+                <div className="shimmer" />
+                <FaWhatsapp size={22} />
+                <span>WHATSAPP US</span>
+              </a>
+            </div>
+          </ShadowWrapper>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/5 pt-20 w-full">
             {[
