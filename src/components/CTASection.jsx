@@ -21,116 +21,52 @@ export default function CTASection() {
   );
 
   return (
-    <section className="py-32 relative overflow-hidden" style={{ background: '#0c0c0c' }}>
-      {/* Dramatic background orbs */}
-      <div
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(201,161,74,0.12) 0%, transparent 70%)' }}
-      />
-      <div
-        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(201,161,74,0.08) 0%, transparent 70%)' }}
-      />
+    <section className="py-24 relative overflow-hidden bg-[#0A0A0A] border-t border-white/5">
+      {/* Background orbs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
 
-      {/* Animated grid */}
-      <div
-        className="absolute inset-0 opacity-30 hero-bg-grid"
-      />
-
-      <div className="max-w-4xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
-        <div ref={sectionRef} className="reveal text-center">
-          {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-8"
-            style={{ background: 'rgba(201,161,74,0.1)', border: '1px solid rgba(201,161,74,0.35)', color: '#C9A14A' }}
-          >
-            <MdVerified size={14} />
-            Get In Touch Today
-          </div>
-
-          {/* Heading */}
-          <h2 className="font-black text-white leading-tight mb-6" style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}>
-            Ready to Upgrade
-            <br />
-            <span className="text-gold-gradient">Your Style?</span>
+      <div className="safe-container relative z-10 text-center">
+        <div ref={sectionRef} className="reveal max-w-3xl mx-auto">
+          <span className="text-gold font-bold tracking-[0.3em] uppercase text-xs mb-6 block">Ready to Step Up?</span>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+            UPGRADE YOUR <br />
+            <span className="text-gold-gradient">FOOTWEAR STYLE</span>
           </h2>
-
-          {/* Sub */}
-          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            Connect with our footwear experts. Get personalized recommendations, exclusive offers, and find your perfect pair today.
+          <p className="text-gray-400 text-lg md:text-xl font-light mb-12 leading-relaxed">
+            Experience the pinnacle of footwear luxury. Consult our experts for personalized sizing 
+            and exclusive collection access.
           </p>
 
-          {/* Divider */}
-          <div className="flex items-center gap-4 justify-center mb-10">
-            <div className="h-px w-16" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,161,74,0.5))' }} />
-            <span className="text-[#C9A14A] text-xs font-bold tracking-widest uppercase">Call or WhatsApp</span>
-            <div className="h-px w-16" style={{ background: 'linear-gradient(90deg, rgba(201,161,74,0.5), transparent)' }} />
-          </div>
-
-          {/* Big phone display */}
-          <a
-            href={`tel:${phoneNumber}`}
-            className="inline-block mb-10 group"
-          >
-            <div
-              className="px-8 py-4 rounded-2xl transition-all duration-400 group-hover:scale-105"
-              style={{
-                background: 'rgba(201,161,74,0.06)',
-                border: '1px solid rgba(201,161,74,0.25)',
-              }}
-            >
-              <p className="text-gray-500 text-xs tracking-widest uppercase mb-1">Call Us Directly</p>
-              <p
-                className="font-black text-gold-gradient"
-                style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
-              >
-                +91 63025 41440
-              </p>
-            </div>
-          </a>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <a
               href={`tel:${phoneNumber}`}
-              id="cta-call-btn"
-              className="btn-primary flex items-center gap-3 px-10 py-4 text-base group w-full sm:w-auto justify-center"
+              className="btn-primary px-12 py-5 rounded-2xl w-full sm:w-auto flex items-center justify-center gap-3 font-black text-sm tracking-widest shadow-[0_20px_40px_rgba(201,161,74,0.3)] hover:shadow-[0_25px_50px_rgba(201,161,74,0.4)]"
             >
-              <FaPhone size={18} />
-              <span>Call Now</span>
-              <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <FaPhone size={16} />
+              CALL DIRECTLY
             </a>
             <a
               href={`https://wa.me/91${phoneNumber}?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              id="cta-whatsapp-btn"
-              className="flex items-center justify-center gap-3 px-10 py-4 rounded-xl font-black text-base w-full sm:w-auto transition-all duration-400 hover:scale-105 hover:-translate-y-1"
-              style={{
-                background: 'linear-gradient(135deg, #25D366, #128C7E)',
-                color: '#fff',
-                boxShadow: '0 0 0 0 rgba(37,211,102,0.4)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(37,211,102,0.4), 0 0 60px rgba(37,211,102,0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 0 0 rgba(37,211,102,0.4)';
-              }}
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white px-12 py-5 rounded-2xl w-full sm:w-auto flex items-center justify-center gap-3 font-black text-sm tracking-widest transition-all duration-300 hover:scale-105"
             >
               <FaWhatsapp size={20} />
-              <span>WhatsApp Us</span>
+              WHATSAPP US
             </a>
           </div>
 
-          {/* Trust Items */}
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/5 pt-12">
             {[
-              '⏰ Open 9 AM – 10 PM',
-              '📍 Beside Bus Stand, Narsampet',
-              '✅ 500+ Happy Customers',
+              { icon: '⏰', text: 'Open 9 AM – 10 PM', sub: 'Daily Service' },
+              { icon: '📍', text: 'Beside Bus Stand', sub: 'Narsampet, TS' },
+              { icon: '✅', text: '500+ Happy Clients', sub: 'Premium Trust' },
             ].map((item) => (
-              <span key={item} className="text-gray-500 text-sm font-medium">{item}</span>
+              <div key={item.text} className="flex flex-col items-center">
+                <span className="text-2xl mb-2">{item.icon}</span>
+                <span className="text-white font-bold text-sm tracking-tight">{item.text}</span>
+                <span className="text-gray-500 text-[10px] uppercase tracking-widest mt-1">{item.sub}</span>
+              </div>
             ))}
           </div>
         </div>

@@ -12,6 +12,7 @@ import CTASection from './components/CTASection';
 import PremiumShowcase from './components/PremiumShowcase';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
+import AnnouncementBar from './components/AnnouncementBar';
 import { FaWhatsapp, FaTimes } from 'react-icons/fa';
 import { PrivacyPolicy, TermsConditions } from './components/LegalSection';
 
@@ -108,6 +109,7 @@ export default function App() {
 
   return (
     <div className="bg-[#0F0F0F] text-white min-h-screen">
+      <AnnouncementBar />
       <Navbar />
       <main className="w-full">
         <HeroSection />

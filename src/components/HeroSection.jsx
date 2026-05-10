@@ -193,42 +193,50 @@ export default function HeroSection() {
             </div>
           </div>
 
+          {/* ── RIGHT: Hero Carousel ── */}
           <div
-            className={`relative flex justify-center items-center transition-all duration-1000 ${
+            className={`relative flex justify-center items-center transition-all duration-1000 h-[500px] lg:h-[600px] ${
               mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
             }`}
             style={{ transitionDelay: '300ms' }}
           >
-            <div className="relative w-full max-w-[600px] aspect-square flex items-center justify-center">
-              <div className="absolute inset-0 bg-gold/5 rounded-full blur-[100px] animate-pulsGlow" />
-              <div className="absolute inset-0 border border-gold/10 rounded-full animate-rotateSlow" style={{ transform: 'scale(1.2)' }} />
+            <div className="relative w-full h-full flex items-center justify-center">
+              {/* Background ambient light */}
+              <div className="absolute inset-0 bg-gold/10 rounded-full blur-[120px] animate-pulsGlow opacity-40" />
               
+              {/* Carousel Content */}
               {HERO_IMAGES.map((img, idx) => (
                 <div 
                   key={idx}
-                  className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-1000 transform ${
-                    activeSlide === idx ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-10 pointer-events-none'
+                  className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-1000 ease-in-out transform ${
+                    activeSlide === idx ? 'opacity-100 scale-110 rotate-0 translate-y-0' : 'opacity-0 scale-75 rotate-12 translate-y-20 pointer-events-none'
                   }`}
                 >
-                  <img
-                    src={img.url}
-                    alt={img.title}
-                    className="w-[85%] object-contain drop-shadow-[0_40px_80px_rgba(201,161,74,0.4)]"
-                  />
-                  <div className="mt-8 text-center bg-black/40 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10">
-                     <p className="text-gold font-black text-lg tracking-widest uppercase">{img.title}</p>
-                     <p className="text-white/60 text-xs tracking-tighter uppercase">{img.subtitle}</p>
+                  <div className="relative group">
+                    <img
+                      src={img.url}
+                      alt={img.title}
+                      className="w-full max-h-[400px] lg:max-h-[500px] object-contain drop-shadow-[0_20px_60px_rgba(201,161,74,0.6)] transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Perspective shadow */}
+                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-2/3 h-10 bg-gold/20 blur-3xl rounded-full" />
+                  </div>
+                  
+                  <div className="mt-12 text-center">
+                     <h3 className="text-4xl lg:text-5xl font-black text-white tracking-tighter mb-2 drop-shadow-2xl">{img.title}</h3>
+                     <p className="text-gold font-bold text-xs lg:text-sm tracking-[0.5em] uppercase">{img.subtitle}</p>
                   </div>
                 </div>
               ))}
 
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+              {/* Slider Controls */}
+              <div className="absolute -bottom-6 flex gap-4">
                 {HERO_IMAGES.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveSlide(idx)}
-                    className={`w-12 h-1.5 rounded-full transition-all duration-500 ${
-                      activeSlide === idx ? 'bg-gold w-20' : 'bg-white/10 hover:bg-white/30'
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      activeSlide === idx ? 'bg-gold w-16 shadow-[0_0_20px_rgba(201,161,74,1)]' : 'bg-white/10 w-8 hover:bg-white/30'
                     }`}
                   />
                 ))}
