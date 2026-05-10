@@ -30,11 +30,13 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
               to bring you the finest collection for every occasion.
             </p>
             <div className="flex items-center gap-4 text-white/40">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300">
+              <a 
+                href="https://www.instagram.com/mangyafootwear/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300"
+              >
                 <FaInstagram size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300">
-                <FaFacebookF size={16} />
               </a>
             </div>
           </div>
