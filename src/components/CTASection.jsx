@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
 import { MdVerified, MdAccessTime } from 'react-icons/md';
 
