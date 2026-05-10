@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
-import { MdVerified } from 'react-icons/md';
+import { MdVerified, MdAccessTime } from 'react-icons/md';
 
 export default function CTASection() {
   const sectionRef = useRef(null);
