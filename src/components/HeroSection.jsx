@@ -120,11 +120,11 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 safe-container pt-48 pb-32 w-full">
+      <div className="relative z-10 safe-container pt-64 lg:pt-48 pb-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="space-y-10 text-center lg:text-left">
             <div
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-700 mx-auto lg:mx-0 ${
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-700 mx-auto lg:mx-0 mb-4 lg:mb-0 ${
                 mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{
@@ -143,16 +143,16 @@ export default function HeroSection() {
               }`}
               style={{ transitionDelay: '200ms' }}
             >
-              <span className="block text-white font-black leading-none" style={{ fontSize: 'clamp(3.5rem, 9vw, 7rem)' }}>
+              <span className="block text-white font-black leading-none" style={{ fontSize: 'clamp(3rem, 10vw, 7rem)' }}>
                 Elevate
               </span>
               <span
-                className="block font-black leading-none text-gold-gradient py-4"
-                style={{ fontSize: 'clamp(3.5rem, 9vw, 7rem)', fontFamily: "'Playfair Display', serif" }}
+                className="block font-black leading-none text-gold-gradient py-3 lg:py-4"
+                style={{ fontSize: 'clamp(3rem, 10vw, 7rem)', fontFamily: "'Playfair Display', serif" }}
               >
                 Every Step
               </span>
-              <span className="block text-white/50 font-light leading-none tracking-tighter" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
+              <span className="block text-white/50 font-light leading-none tracking-tighter" style={{ fontSize: 'clamp(1.5rem, 6vw, 4rem)' }}>
                 With Luxury.
               </span>
             </h1>
@@ -169,26 +169,26 @@ export default function HeroSection() {
             </p>
 
             <div
-              className={`flex flex-wrap justify-center lg:justify-start gap-6 transition-all duration-700 ${
+              className={`flex flex-row justify-center lg:justify-start gap-4 sm:gap-6 transition-all duration-700 ${
                 mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: '500ms' }}
             >
               <a
                 href="#collection"
-                className="btn-primary flex items-center gap-4 px-10 py-5 text-sm font-black uppercase tracking-widest group shadow-[0_20px_50px_rgba(201,161,74,0.2)]"
+                className="btn-primary flex items-center gap-2 sm:gap-4 px-6 sm:px-10 py-4 sm:py-5 text-[10px] sm:text-sm font-black uppercase tracking-widest group shadow-[0_20px_50px_rgba(201,161,74,0.2)] flex-1 sm:flex-none justify-center"
               >
-                <span>Browse Elite</span>
-                <HiArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
+                <span className="whitespace-nowrap">Browse Elite</span>
+                <HiArrowRight className="group-hover:translate-x-2 transition-transform duration-300 hidden sm:block" />
               </a>
               <a
                 href={`https://wa.me/91${phoneNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline flex items-center gap-4 px-10 py-5 text-sm font-black uppercase tracking-widest"
+                className="btn-outline flex items-center gap-2 sm:gap-4 px-6 sm:px-10 py-4 sm:py-5 text-[10px] sm:text-sm font-black uppercase tracking-widest flex-1 sm:flex-none justify-center"
               >
-                <FaWhatsapp size={20} />
-                <span>Contact</span>
+                <FaWhatsapp size={16} />
+                <span className="whitespace-nowrap">Contact</span>
               </a>
             </div>
           </div>

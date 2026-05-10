@@ -72,18 +72,18 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
               <div className="relative">
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:scale-110 shadow-lg border-2 border-gold/30"
+                  className="w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:scale-110 shadow-lg border-2 border-gold/30"
                 >
                   <img src="/rakesh_logo.jpeg" alt="Mangya Logo" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
               <div className="ml-1">
-                <div className="text-2xl font-black text-gold-gradient leading-none tracking-tight">Mangya</div>
-                <div className="text-[9px] text-[#C9A14A]/80 font-bold tracking-[0.4em] uppercase mt-1">Footwear Elite</div>
+                <div className="text-xl sm:text-2xl font-black text-gold-gradient leading-none tracking-tight">Mangya</div>
+                <div className="text-[8px] sm:text-[9px] text-[#C9A14A]/80 font-bold tracking-[0.3em] uppercase mt-1">Footwear Elite</div>
               </div>
             </Link>
 
