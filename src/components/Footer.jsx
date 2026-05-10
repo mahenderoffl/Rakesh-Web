@@ -119,7 +119,7 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
             <div className="flex items-center gap-2 mb-2">
                <span className="text-[10px] text-gray-600 uppercase tracking-widest font-medium">Architected by</span>
                <a 
-                href="https://wa.me/919391076809?text=Hi%20WaveSeed%20Growth,%20I'm%20interested%20in%20a%20premium%20website%20like%20Mangya%20Footwear." 
+                href="https://wa.me/919391076809?text=Hi%20WaveSeed%20Growth,%20I%20am%20interested%20in%20a%20premium%20website%20lets%20connect" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gold font-black text-xs tracking-tighter hover:text-white transition-colors duration-300"
